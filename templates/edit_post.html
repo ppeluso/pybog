@@ -1,0 +1,19 @@
+<h1>Hello update admin </h1>
+
+    <form action= "{{ url_for('post_edit', post_title = post_title)}}" method=post class=add-entry>
+      <dl>
+        <dt>Title:
+        <dd><input type=text size=30 name='title' , value = " {{ title }} "> 
+        <dt>Text:
+        <dd><textarea name=text rows=5 cols=40>{{ post }} </textarea>
+	<dt>Categories:
+	<dd><input type=text size=30 name='categories', value = " {{ categories }} ">	
+	<dt>Draft
+	<dd><input type="checkbox" name = "check" value=1>
+        <dd><input type=submit value=Update>
+	
+      </dl>
+    </form>
+
+
+

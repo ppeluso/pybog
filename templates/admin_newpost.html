@@ -1,0 +1,16 @@
+<h1>Hello admin </h1>
+
+    <form action="{{ url_for('new_post') }}" method=post class=add-entry>
+      <dl>
+        <dt>Title:
+        <dd><input type=text size=30 name=title>
+        <dt>Text:
+        <dd><textarea name=text rows=5 cols=40></textarea>
+	<dt>Categories:
+	<dd><input type=text size=30 name=categories>	
+	<dt>Draft
+	<dd><input type="checkbox" name = "check" value=1>
+        <dd><input type=submit value="New Post">
+	
+      </dl>
+    </form>

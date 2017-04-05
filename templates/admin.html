@@ -1,0 +1,10 @@
+{% extends 'admin_base.html' %}
+{% block body_content %}
+{% for link, title in tl %}
+<a href = "{{ link }}"> {{ title[0] }} </a>
+<br>
+{% endfor %}
+
+
+{% endblock %}
+
