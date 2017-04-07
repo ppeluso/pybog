@@ -111,14 +111,20 @@ def admin_logout():
 
 @app.route('/admin/photos', methods= ["GET", "POST"])
 def admin_photo():
-    if request.method == "POST":
+    print(request.path)
+    filelist = [f for f in os.listdir(UPLOAD_FOLDER) if os.path.isfile(os.path.join(UPLOAD_FOLDER, f))]
+    if request.method == "POST" and request.form.get("delete"):
+        os.remove(os.path.join(UPLOAD_FOLDER,request.form["delete"]))
+        redirect(url_for('admin_photo'))
+
+    if request.method == "POST" and request.form.get("file"):
         file = request.files['file']
     # Check if the file is one of the allowed types/extensions
         if file:
             filename = file.filename
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             return redirect(url_for('index'))
-    return render_template("admin_photo.html")
+    return render_template("admin_photo.html", filenames = filelist)
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -127,4 +133,4 @@ def uploaded_file(filename):
 
 if __name__ == "__main__":
 
-    app.run()
+    app.run(debug = True)

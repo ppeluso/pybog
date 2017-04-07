@@ -1,4 +1,16 @@
+  {% extends 'admin_base.html' %} 
+  {% block body_content %}
+   {% for f in filenames %}
+   <img src = '{{ url_for('uploaded_file', filename= f) }}' height ="200px" width="200px" > </img>
+   <form action="" method="POST">
+   <button name= 'delete' value= "{{ f }}"> Delete </button>
+   </form>
+   <br> </br>
+   {% endfor %}
+
     <form method=post enctype=multipart/form-data action= {{ url_for('admin_photo') }}>
       <p><input type=file name=file>
          <input type=submit value=Upload>
     </form>
+
+{% endblock %}
